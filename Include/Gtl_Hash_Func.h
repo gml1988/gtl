@@ -114,36 +114,36 @@ namespace GTL
         }
     };
 
-	template <class T>
-	struct GetKey {};
+    template <class T>
+    struct GetKey {};
 
-	template <>
-	struct GetKey<int>
-	{
-		int operator()(int x) { return x; }
-	};
+    template <>
+    struct GetKey<int>
+    {
+        int operator()(int x) { return x; }
+    };
 
-	template <>
-	struct GetKey<std::string>
-	{
-		char const *operator()(std::string const &str) { return str.c_str(); }
-	};
+    template <>
+    struct GetKey<std::string>
+    {
+        char const *operator()(std::string const &str) { return str.c_str(); }
+    };
 
-	template <class T>
-	struct Equal
-	{
-		bool operator()(T const &a, T const &b) { return a == b; }
-	};
+    template <class T>
+    struct Equal
+    {
+        bool operator()(T const &a, T const &b) { return a == b; }
+    };
 
-	template <class T>
-	struct GreaterThan
-	{
-		bool operator()(T const &a, T const& b) { return a > b; }
-	};
+    template <class T>
+    struct GreaterThan
+    {
+        bool operator()(T const &a, T const& b) { return a > b; }
+    };
 
-	template <class T>
-	struct LessThan
-	{
-		bool operator()(T const &a, T const& b) { return a < b; }
-	};
+    template <class T>
+    struct LessThan
+    {
+        bool operator()(T const &a, T const& b) { return a < b; }
+    };
 }

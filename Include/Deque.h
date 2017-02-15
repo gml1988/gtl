@@ -179,7 +179,7 @@ namespace GTL
         typedef typename __Deque_Iterator<T, T&, T*, BufSize>::const_iterator const_iterator;
         typedef size_t                                  size_type;
         typedef ptrdiff_t                               difference_type;
-		typedef Deque<T, Alloc>							self;
+        typedef Deque<T, Alloc>                         self;
 
     public:
         Deque(size_type nSize, const T &value)

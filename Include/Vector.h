@@ -10,24 +10,24 @@
 namespace GTL
 {
     template <class T, class Alloc=Allocator>
-	class Vector
-	{
+    class Vector
+    {
         //Need define the typename for the internal use, abstract the expression of the type
     public:
-        typedef T					value_type;
-        typedef T&					reference;
+        typedef T                    value_type;
+        typedef T&                    reference;
         typedef T const&            const_reference;
-        typedef T*					pointer;
-        typedef T*					iterator;
+        typedef T*                    pointer;
+        typedef T*                    iterator;
         typedef T const*            const_iterator;
-        typedef size_t				size_type;
-        typedef ptrdiff_t			difference_type;
-		typedef Vector<T, Alloc>	self;
+        typedef size_t                size_type;
+        typedef ptrdiff_t            difference_type;
+        typedef Vector<T, Alloc>    self;
 
-	public:
+    public:
         Vector() : _iterStart(nullptr), _iterFinish(nullptr), _iterEndOfStorage(nullptr)
         {
-			
+            
         }
 
         Vector(size_type nSize, T const &value)
@@ -37,27 +37,27 @@ namespace GTL
 
         template <class Iterator>
         Vector(Iterator first, Iterator last, typename std::enable_if<std::_Is_iterator<Iterator>::value, void>::type ** = 0)
-			: _iterStart(nullptr), _iterFinish(nullptr), _iterEndOfStorage(nullptr)
+            : _iterStart(nullptr), _iterFinish(nullptr), _iterEndOfStorage(nullptr)
         {
-			Reserve(last - first + 1);
-			Insert(_iterFinish, first, last);
+            Reserve(last - first + 1);
+            Insert(_iterFinish, first, last);
         }
 
-		~Vector()
+        ~Vector()
         {
             Destroy(_iterStart, _iterFinish);
             Deallocate();
         }
 
         size_type Size() const
-		{
-			return _iterFinish - _iterStart;
-		}
+        {
+            return _iterFinish - _iterStart;
+        }
 
-		size_type Capacity() const
-		{
-			return _iterEndOfStorage - _iterStart;
-		}
+        size_type Capacity() const
+        {
+            return _iterEndOfStorage - _iterStart;
+        }
 
         bool Empty() const
         {
@@ -79,10 +79,10 @@ namespace GTL
             return *(_iterStart + pos);
         }
 
-		const_reference operator[](size_type nPos) const
-		{
-			return *(_iterStart + nPos);
-		}
+        const_reference operator[](size_type nPos) const
+        {
+            return *(_iterStart + nPos);
+        }
 
         reference Front()
         {
@@ -95,26 +95,26 @@ namespace GTL
         }
 
         void PushBack(T const &value)
-		{
-			if (_iterFinish != _iterEndOfStorage)
-			{
-				Construct(_iterFinish, value);
-				++_iterFinish;
-			}
-			else
-			{
+        {
+            if (_iterFinish != _iterEndOfStorage)
+            {
+                Construct(_iterFinish, value);
+                ++_iterFinish;
+            }
+            else
+            {
                 _Insert_Aux(_iterFinish, value);
-			}
-		}
+            }
+        }
 
-		void PopBack()
-		{
-			if (_iterFinish != _iterStart)
-			{
+        void PopBack()
+        {
+            if (_iterFinish != _iterStart)
+            {
                 --_iterFinish;
-				Destroy(_iterFinish);
-			}
-		}
+                Destroy(_iterFinish);
+            }
+        }
 
         void Insert(iterator &iter, T const &value)
         {
@@ -122,7 +122,7 @@ namespace GTL
         }
 
         template <class Iterator>
-		void Insert(iterator iter, Iterator first, Iterator last, typename std::enable_if<std::_Is_iterator<Iterator>::value, void>::type ** = 0)
+        void Insert(iterator iter, Iterator first, Iterator last, typename std::enable_if<std::_Is_iterator<Iterator>::value, void>::type ** = 0)
         {
             while (first < last)
             {
@@ -179,50 +179,50 @@ namespace GTL
             }
         }
 
-		void Reserve(size_type nNewCapacity)
-		{
-			size_type nCurrentCapacity = Capacity();
-			// If current capacity can't meet the request, allocate a new memory and copy the previous content to the new space
-			if (nCurrentCapacity < nNewCapacity)
-			{
-				T *pNewArray = DataAllocator::Allocate(nNewCapacity);
-				iterator iterNewStart(pNewArray);
-				std::copy(_iterStart, _iterFinish, iterNewStart);
-				iterator iterNewFinish = iterNewStart + Size();
-				Deallocate();
-				_iterStart = iterNewStart;
-				_iterFinish = iterNewFinish;
-				_iterEndOfStorage = _iterStart + nNewCapacity;
-			}
-		}
+        void Reserve(size_type nNewCapacity)
+        {
+            size_type nCurrentCapacity = Capacity();
+            // If current capacity can't meet the request, allocate a new memory and copy the previous content to the new space
+            if (nCurrentCapacity < nNewCapacity)
+            {
+                T *pNewArray = DataAllocator::Allocate(nNewCapacity);
+                iterator iterNewStart(pNewArray);
+                std::copy(_iterStart, _iterFinish, iterNewStart);
+                iterator iterNewFinish = iterNewStart + Size();
+                Deallocate();
+                _iterStart = iterNewStart;
+                _iterFinish = iterNewFinish;
+                _iterEndOfStorage = _iterStart + nNewCapacity;
+            }
+        }
 
-		void Clear()
-		{
-			Destroy(_iterStart, _iterFinish);
-			_iterFinish = _iterStart;
-		}
+        void Clear()
+        {
+            Destroy(_iterStart, _iterFinish);
+            _iterFinish = _iterStart;
+        }
 
-		void Swap(self &other)
-		{
-			GTL::Swap<iterator>(_iterStart, other._iterStart);
-			GTL::Swap<iterator>(_iterFinish, other._iterFinish);
-			GTL::Swap<iterator>(_iterEndOfStorage, other._iterEndOfStorage);
-		}
+        void Swap(self &other)
+        {
+            GTL::Swap<iterator>(_iterStart, other._iterStart);
+            GTL::Swap<iterator>(_iterFinish, other._iterFinish);
+            GTL::Swap<iterator>(_iterEndOfStorage, other._iterEndOfStorage);
+        }
 
     protected:
-		typedef Simple_Allocator<T, Alloc> DataAllocator;
+        typedef Simple_Allocator<T, Alloc> DataAllocator;
 
-	private:
-		void _Insert_Aux(iterator const &iter, T const &value)
-		{
-			if (_iterFinish != _iterEndOfStorage)
-			{
-				std::copy_backward(iter, _iterFinish, iter + 1);
-				Construct(iter, value);
-				++_iterFinish;
-			}
-			else
-			{
+    private:
+        void _Insert_Aux(iterator const &iter, T const &value)
+        {
+            if (_iterFinish != _iterEndOfStorage)
+            {
+                std::copy_backward(iter, _iterFinish, iter + 1);
+                Construct(iter, value);
+                ++_iterFinish;
+            }
+            else
+            {
                 size_type nCurrentCapacity = Capacity();
                 // Double the capacity of the new vector container
                 size_type nNewCapacity = (nCurrentCapacity > 0) ? (nCurrentCapacity << 1) : s_cnInitCapacity;
@@ -246,23 +246,23 @@ namespace GTL
                 _iterStart = iterNewStart;
                 _iterFinish = iterNewFinish;
                 _iterEndOfStorage = iterNewEndOfStorage;
-			}
-		}
+            }
+        }
 
-		void _FillAndInitialize(size_type nSize, T const &value)
-		{
-			_iterStart = _AllocateAndFill(nSize, value);
+        void _FillAndInitialize(size_type nSize, T const &value)
+        {
+            _iterStart = _AllocateAndFill(nSize, value);
             _iterFinish = _iterStart + nSize;
-			_iterEndOfStorage = _iterStart + nSize;
-		}
+            _iterEndOfStorage = _iterStart + nSize;
+        }
 
-		iterator _AllocateAndFill(size_type nSize, T const &value)
-		{
-			T* pNewAllocArray = DataAllocator::Allocate(nSize);
-			iterator iterNewStart(pNewAllocArray);
-			Uninitialized_Fill_N(iterNewStart, nSize, value);
-			return iterNewStart;
-		}
+        iterator _AllocateAndFill(size_type nSize, T const &value)
+        {
+            T* pNewAllocArray = DataAllocator::Allocate(nSize);
+            iterator iterNewStart(pNewAllocArray);
+            Uninitialized_Fill_N(iterNewStart, nSize, value);
+            return iterNewStart;
+        }
 
         // Release the container memory for the vector
         void Deallocate()
@@ -273,10 +273,10 @@ namespace GTL
             }
         }
 
-	private:
+    private:
         static const size_type s_cnInitCapacity = 20;
-		iterator _iterStart;					//The buffer between iterStart and iterEndOfStorge is reserved from memory to accomodate the elements
-		iterator _iterFinish;
-		iterator _iterEndOfStorage;
-	};
+        iterator _iterStart;                    //The buffer between iterStart and iterEndOfStorge is reserved from memory to accomodate the elements
+        iterator _iterFinish;
+        iterator _iterEndOfStorage;
+    };
 }

@@ -16,7 +16,7 @@ namespace GTL
     template <class Value>
     struct __RBTreeNode
     {
-		typedef __RBTreeColor			color_type;
+        typedef __RBTreeColor           color_type;
         typedef __RBTreeNode<Value>     self;
         typedef __RBTreeNode<Value>*    node_pointer;
 
@@ -64,9 +64,9 @@ namespace GTL
         node_pointer pParent;
     };
 
-	template <class Value, class Ref, class Ptr>
-	struct __RBTreeIterator
-	{
+    template <class Value, class Ref, class Ptr>
+    struct __RBTreeIterator
+    {
         typedef Value&                              reference;
         typedef __RBTreeNode<Value>                 tree_node;
         typedef __RBTreeNode<Value>*                node_pointer;
@@ -164,8 +164,8 @@ namespace GTL
             }
         }
 
-		node_pointer pTreeNode;
-	};
+        node_pointer pTreeNode;
+    };
 
 	// An RB-Tree based Map
 	template <class Key, class Value, class ExtractKey, class Compare, class Alloc = Allocator>
@@ -627,5 +627,5 @@ namespace GTL
         node_pointer    _pSentinelNode;
         size_type       _nNodeCount;
         Compare         _comparer;
-	};
+    };
 }

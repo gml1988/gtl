@@ -12,7 +12,7 @@ namespace GTL
         typedef Sequence::size_type         size_type;
         typedef Sequence::reference         reference;
         typedef Sequence::const_reference   const_reference;
-		typedef Stack<T, Sequence>			self;
+        typedef Stack<T, Sequence>            self;
 
     public:
         bool Empty() const
