@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Algo">
+      <UniqueIdentifier>{c6135978-4df1-4313-be29-065801b667ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Container">
+      <UniqueIdentifier>{ff805e44-c33f-4451-95b4-30044fce6dfd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Include\Alloc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\BitManipulation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\ByteBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Convert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Gtl_Alloc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Gtl_Common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Gtl_Construct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Gtl_Hash_Func.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Gtl_Uninitialized.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Iterator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Iterator_Traits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Numeric.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Pair.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\RBTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Set.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\SimpleAllocator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Type_Traits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Algo_Basic.h">
+      <Filter>Header Files\Algo</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Algo_Numeric.h">
+      <Filter>Header Files\Algo</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Algo_String.h">
+      <Filter>Header Files\Algo</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Deque.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Heap.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\HashSet.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\HashTable.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\LinkedList.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\List.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Map.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\PriorityQueue.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Stack.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Vector.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+    <ClInclude Include="Include\Queue.h">
+      <Filter>Header Files\Container</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Vector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
