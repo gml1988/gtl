@@ -167,11 +167,11 @@ namespace GTL
         node_pointer pTreeNode;
     };
 
-	// An RB-Tree based Map
-	template <class Key, class Value, class ExtractKey, class Compare, class Alloc = Allocator>
-	class RBTree
-	{
-	public:
+    // An RB-Tree based Map
+    template <class Key, class Value, class ExtractKey, class Compare, class Alloc = Allocator>
+    class RBTree
+    {
+    public:
         typedef Key         key_type;
         typedef Value       value_type;
         typedef value_type& reference;
@@ -179,7 +179,7 @@ namespace GTL
         typedef ExtractKey  get_key;
         typedef size_t      size_type;
         typedef ptrdiff_t   difference_type;
-		typedef __RBTreeIterator<Value, Value &, Value *>	iterator;
+        typedef __RBTreeIterator<Value, Value &, Value *>    iterator;
 
     public:
         RBTree(Compare const &comp = Compare()) : _nNodeCount(0), _comparer(comp)

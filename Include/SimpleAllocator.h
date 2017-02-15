@@ -19,7 +19,7 @@ namespace GTL
 
         return tmp;
     }
-	                
+                    
     template <class T>
     void Deallocate(T* buffer)
     {
